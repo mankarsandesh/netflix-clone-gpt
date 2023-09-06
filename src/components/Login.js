@@ -1,7 +1,11 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
 import { checkValidationData } from '../utlis/validation'
-
+import {
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
+} from 'firebase/auth'
+import { auth } from '../utlis/firebase'
 const Login = () => {
 	const [isSignInForm, setIsSignInForm] = useState(true)
 	const [errorMessage, setErrorMessage] = useState(null)
@@ -15,6 +19,41 @@ const Login = () => {
 			password.current.value
 		)
 		setErrorMessage(message)
+		if (message) return
+
+		if (!isSignInForm) {
+			// Sign Up
+			createUserWithEmailAndPassword(
+				auth,
+				email.current.value,
+				password.current.value
+			)
+				.then((userCredential) => {
+					const user = userCredential.user
+					console.log(user)
+				})
+				.catch((error) => {
+					const errorMessage = error.message
+					const errorCode = error.code
+					setErrorMessage(errorCode + '-' + errorMessage)
+				})
+		} else {
+			// Sign In
+			signInWithEmailAndPassword(
+				auth,
+				email.current.value,
+				password.current.value
+			)
+				.then((userCredential) => {
+					const user = userCredential.user
+					console.log(user)
+				})
+				.catch((error) => {
+					const errorMessage = error.message
+					const errorCode = error.code
+					setErrorMessage(errorCode + '-' + errorMessage)
+				})
+		}
 	}
 	const toggleSignInForm = () => {
 		setIsSignInForm(!isSignInForm)
@@ -68,7 +107,7 @@ const Login = () => {
 					className="text-md mt-4 font cursor-pointer"
 					onClick={toggleSignInForm}
 				>
-					{isSignInForm ? 'Already Register' : 'New to Netflix? Sign up now'}
+					{isSignInForm ? 'New to Netflix? Sign up now' : 'Already Register'}
 				</p>
 			</form>
 		</div>
