@@ -20,7 +20,6 @@ const Login = () => {
 	const password = useRef(null)
 	const name = useRef(null)
 
-	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
 	const signInForm = (e) => {
@@ -53,7 +52,6 @@ const Login = () => {
 									photoURL: photoURL,
 								})
 							)
-							navigate('/browse')
 						})
 						.catch((error) => {
 							setErrorMessage(error.message)
@@ -71,8 +69,6 @@ const Login = () => {
 			)
 				.then((userCredential) => {
 					const user = userCredential.user
-					console.log(user)
-					navigate('/browse')
 				})
 				.catch((error) => {
 					const errorMessage = error.message
