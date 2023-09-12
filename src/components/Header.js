@@ -4,6 +4,7 @@ import { signOut, onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../utlis/firebase'
 import { useNavigate } from 'react-router-dom'
 import { addUser, removeUser } from '../utlis/userSlice'
+import { toggleGptSearchView } from '../utlis/gptSlice'
 
 const Category = () => {
 	const data = [
@@ -61,6 +62,10 @@ const Header = () => {
 		return () => unsubscribe()
 	}, [])
 
+	const handleGptShow = () => {
+		dispatch(toggleGptSearchView())
+	}
+
 	return (
 		<div className="fixed top-0 z-10 w-full flex px-6 pt-1 bg-black from-black items-stretch">
 			<img
@@ -74,7 +79,13 @@ const Header = () => {
 						<div className="flex-auto w-64">
 							<Category />
 						</div>
-						<div className=" flex-last w-32 flex py-4 gap-4 text-white">
+						<div className=" flex-last  flex py-4 gap-4 text-white">
+							<button
+								className="bg-white text-black px-4 rounded-sm"
+								onClick={handleGptShow}
+							>
+								GPT Search
+							</button>
 							<div>
 								<img src={user.photoURL} className="w-8 rounded" alt="" />
 							</div>
