@@ -5,28 +5,9 @@ import { auth } from '../utlis/firebase'
 import { useNavigate } from 'react-router-dom'
 import { addUser, removeUser } from '../utlis/userSlice'
 import { toggleGptSearchView } from '../utlis/gptSlice'
-
-const Category = () => {
-	const data = [
-		'Home',
-		'Tv Shows',
-		'Movies',
-		'New & Popular',
-		'My List',
-		'Watch Again',
-	]
-	return (
-		<ul className="flex  text-white py-4 gap-3 px-4 text-xs ">
-			{data.map((item, index) => {
-				return (
-					<li key={index} className="cursor-pointer">
-						{item}
-					</li>
-				)
-			})}
-		</ul>
-	)
-}
+import { setLanguages } from '../utlis/configSlice'
+import Category from '../components/Category'
+import { SUPPORTED_LANGUAGES } from '../utlis/constants'
 const Header = () => {
 	const user = useSelector((store) => store.user)
 	const Navigate = useNavigate()
@@ -66,6 +47,10 @@ const Header = () => {
 		dispatch(toggleGptSearchView())
 	}
 
+	const handleChangeLanguage = (e) => {
+		dispatch(setLanguages(e.target.value))
+	}
+
 	return (
 		<div className="fixed top-0 z-10 w-full flex px-6 pt-1 bg-black from-black items-stretch">
 			<img
@@ -80,6 +65,14 @@ const Header = () => {
 							<Category />
 						</div>
 						<div className=" flex-last  flex py-4 gap-4 text-white">
+							<select
+								className="bg-black text-white"
+								onChange={handleChangeLanguage}
+							>
+								{SUPPORTED_LANGUAGES.map((languages) => (
+									<option value={languages.identifier}>{languages.name}</option>
+								))}
+							</select>
 							<button
 								className="bg-white text-black px-4 rounded-sm"
 								onClick={handleGptShow}

@@ -8,3 +8,27 @@ export const API_OPTIONS = {
 }
 
 export const BASE_IMAGE = 'https://image.tmdb.org/t/p/w500/'
+
+export const MENU_LIST = [
+	'Home',
+	'Tv Shows',
+	'Movies',
+	'New & Popular',
+	'My List',
+	'Watch Again',
+]
+
+export const SUPPORTED_LANGUAGES = [
+	{
+		identifier: 'en',
+		name: 'English',
+	},
+	{
+		identifier: 'hindi',
+		name: 'Hindi',
+	},
+	{
+		identifier: 'spanish',
+		name: 'Spanish',
+	},
+]
