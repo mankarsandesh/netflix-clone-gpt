@@ -54,9 +54,9 @@ const Header = () => {
 	}
 
 	return (
-		<div className="fixed top-0 z-10 w-full flex px-6 pt-1 bg-black from-black items-stretch">
+		<div className="fixed top-0 z-10 w-full flex px-6 bg-black from-black items-stretch h-16 ">
 			<img
-				className=" h-14 cursor-pointer"
+				className=" h-14 cursor-pointer border"
 				src={LOGO_URL}
 				alt="Netflix Clone"
 				onClick={handleGptShow}
@@ -64,14 +64,14 @@ const Header = () => {
 
 			{user && (
 				<React.Fragment>
-					<div className=" w-full flex">
-						<div className="flex-auto w-64">
+					<div className=" w-full flex ">
+						<div className="flex-auto w-64  ">
 							<Category />
 						</div>
-						<div className=" flex-last  flex py-4 gap-4 text-white">
+						<div className=" flex-last  flex py-4 gap-4 text-white ">
 							{showGptSearch && (
 								<select
-									className="bg-black text-white"
+									className="bg-black text-white border"
 									onChange={handleChangeLanguage}
 								>
 									{SUPPORTED_LANGUAGES.map((languages) => (

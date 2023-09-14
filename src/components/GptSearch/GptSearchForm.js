@@ -5,7 +5,7 @@ import { API_OPTIONS } from '../../utlis/constants'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { addGptMoviesResults } from '../../utlis/gptSlice'
-
+import { FaSearch } from 'react-icons/fa'
 const GptSearchForm = () => {
 	const dispatch = useDispatch()
 	const langKey = useSelector((store) => store.config.languages)
@@ -67,18 +67,22 @@ const GptSearchForm = () => {
 	return (
 		<div className=" relative pt-[10%] px-10  ">
 			<form
-				className="mx-auto w-1/3 py-6 px-10 rounded-md bg-black"
+				className="mx-auto mt-10 md:w-1/3 py-6 px-10 rounded-md bg-black"
 				onSubmit={(e) => e.preventDefault()}
 			>
-				<div className="flex  ">
-					<input
-						ref={searchText}
-						type="text"
-						placeholder={lang[langKey].searchPlaceholder}
-						className="px-2 py-2 rounded-sm w-3/4"
-					/>
+				<div className="flex">
+					<div className="border w-full flex px-2 rounded-l-lg  bg-white">
+						<FaSearch className="text-gray-700 mr-2 mt-2  align-middle" />
+						<input
+							ref={searchText}
+							type="text"
+							placeholder={lang[langKey].searchPlaceholder}
+							className="px-2 py-2 rounded-sm w-full focus:outline-none"
+						/>
+					</div>
+
 					<button
-						className="bg-red-600 text-white px-2 rounded-sm w-1/4"
+						className="bg-red-600 text-white px-2 rounded-r-lg w-1/4"
 						onClick={handleGptSearch}
 						disabled={loading}
 					>
