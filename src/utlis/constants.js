@@ -2,8 +2,7 @@ export const API_OPTIONS = {
 	method: 'GET',
 	headers: {
 		accept: 'application/json',
-		Authorization:
-			'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZDQ2ODM5ZGY1N2RjNDUxMWY1NjFlM2I4ZTI0OWFmNyIsInN1YiI6IjY0ZmRmYThlZmZjOWRlMGVlMDBjMzIxZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mcbQmyQf37EiJikuOCKfn-ExednpMrSYjIexQE1q0mg',
+		Authorization: 'Bearer ' + process.env.REACT_APP_TMDB_KEY,
 	},
 }
 
@@ -33,7 +32,7 @@ export const SUPPORTED_LANGUAGES = [
 	},
 ]
 
-export const OPENAI_KEY = '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'
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY
 
 export const BG_URL =
 	'https://assets.nflxext.com/ffe/siteui/vlv3/855ed6e2-d9f1-4afd-90da-96023ec747c3/85eb5b91-25ed-4965-ace9-ba8e4a0ead8d/IN-en-20230828-popsignuptwoweeks-perspective_alpha_website_large.jpg'
