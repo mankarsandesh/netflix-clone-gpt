@@ -41,6 +41,7 @@ const GptSearchForm = () => {
 			model: 'gpt-3.5-turbo',
 		})
 		if (!gptResults.choices) {
+			setError('somthing went wrong')
 		}
 		setLoading('Finding...')
 		const gptMovies = gptResults.choices?.[0].message?.content.split(',')
@@ -54,6 +55,7 @@ const GptSearchForm = () => {
 			})
 		)
 		setLoading(null)
+		setError(null)
 	}
 
 	useEffect(() => {
