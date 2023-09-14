@@ -10,6 +10,7 @@ import Category from '../components/Category'
 import { SUPPORTED_LANGUAGES } from '../utlis/constants'
 const Header = () => {
 	const user = useSelector((store) => store.user)
+	const showGptSearch = useSelector((store) => store.gpt.showGptSearch)
 	const Navigate = useNavigate()
 	const dispatch = useDispatch()
 	const handleSignOut = () => {
@@ -65,19 +66,24 @@ const Header = () => {
 							<Category />
 						</div>
 						<div className=" flex-last  flex py-4 gap-4 text-white">
-							<select
-								className="bg-black text-white"
-								onChange={handleChangeLanguage}
-							>
-								{SUPPORTED_LANGUAGES.map((languages) => (
-									<option value={languages.identifier}>{languages.name}</option>
-								))}
-							</select>
+							{showGptSearch && (
+								<select
+									className="bg-black text-white"
+									onChange={handleChangeLanguage}
+								>
+									{SUPPORTED_LANGUAGES.map((languages) => (
+										<option key={languages.name} value={languages.identifier}>
+											{languages.name}
+										</option>
+									))}
+								</select>
+							)}
+
 							<button
-								className="bg-white text-black px-4 rounded-sm"
+								className="bg-blue-400  text-white px-4 rounded-sm"
 								onClick={handleGptShow}
 							>
-								GPT Search
+								{showGptSearch ? 'Home Page' : 'GPT Search'}
 							</button>
 							<div>
 								<img src={user.photoURL} className="w-8 rounded" alt="" />
