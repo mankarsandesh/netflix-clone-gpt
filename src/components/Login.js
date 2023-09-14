@@ -15,7 +15,7 @@ import { addUser } from '../utlis/userSlice'
 const Login = () => {
 	const [isSignInForm, setIsSignInForm] = useState(true)
 	const [errorMessage, setErrorMessage] = useState(null)
-
+	const [loading, setLoading] = useState(false)
 	const email = useRef(null)
 	const password = useRef(null)
 	const name = useRef(null)
@@ -27,8 +27,10 @@ const Login = () => {
 			email.current.value,
 			password.current.value
 		)
+
 		setErrorMessage(message)
 		if (message) return
+		setLoading(true)
 		if (!isSignInForm) {
 			// Sign Up
 			createUserWithEmailAndPassword(
@@ -76,6 +78,7 @@ const Login = () => {
 					setErrorMessage(errorCode + '-' + errorMessage)
 				})
 		}
+		setLoading(false)
 	}
 	const toggleSignInForm = () => {
 		setIsSignInForm(!isSignInForm)
@@ -116,7 +119,7 @@ const Login = () => {
 					className="p-4 my-4 bg-red-700 w-full rounded-md"
 					onClick={signInForm}
 				>
-					{isSignInForm ? 'Sign In' : 'Sign Up'}
+					{loading ? 'Finding...' : isSignInForm ? 'Sign In' : 'Sign Up'}
 				</button>
 
 				<p

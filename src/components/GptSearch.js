@@ -1,10 +1,13 @@
 import React from 'react'
 import GptSearchForm from './GptSearch/GptSearchForm'
 import GptMovieSuggestions from './GptSearch/GptMovieSuggestions'
-
+import { BG_URL } from '../utlis/constants'
 const GptSearch = () => {
 	return (
-		<div className=" loginBackground pt-[10%] px-10">
+		<div>
+			<div className="fixed">
+				<img src={BG_URL} alt="back" />
+			</div>
 			<GptSearchForm />
 			<GptMovieSuggestions />
 		</div>

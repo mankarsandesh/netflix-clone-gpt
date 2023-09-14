@@ -21,7 +21,6 @@ const GptSearchForm = () => {
 			API_OPTIONS
 		)
 		const json = await data.json()
-		console.log(json)
 		return json.results
 	}
 
@@ -53,7 +52,7 @@ const GptSearchForm = () => {
 	}
 
 	return (
-		<div className="">
+		<div className=" relative pt-[10%] px-10  ">
 			<form
 				className="flex mx-auto w-1/3 bg-black py-6 px-10 rounded-md "
 				onSubmit={(e) => e.preventDefault()}

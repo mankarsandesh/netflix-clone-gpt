@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { signOut, onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../utlis/firebase'
 import { useNavigate } from 'react-router-dom'
@@ -7,7 +8,7 @@ import { addUser, removeUser } from '../utlis/userSlice'
 import { toggleGptSearchView } from '../utlis/gptSlice'
 import { setLanguages } from '../utlis/configSlice'
 import Category from '../components/Category'
-import { SUPPORTED_LANGUAGES } from '../utlis/constants'
+import { LOGO_URL, SUPPORTED_LANGUAGES } from '../utlis/constants'
 const Header = () => {
 	const user = useSelector((store) => store.user)
 	const showGptSearch = useSelector((store) => store.gpt.showGptSearch)
@@ -55,10 +56,12 @@ const Header = () => {
 	return (
 		<div className="fixed top-0 z-10 w-full flex px-6 pt-1 bg-black from-black items-stretch">
 			<img
-				className="w-24 h-12"
-				src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+				className=" h-14 cursor-pointer"
+				src={LOGO_URL}
 				alt="Netflix Clone"
+				onClick={handleGptShow}
 			/>
+
 			{user && (
 				<React.Fragment>
 					<div className=" w-full flex">
