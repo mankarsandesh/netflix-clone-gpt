@@ -1,7 +1,14 @@
-#Netflix Clone
+<h1 align="center">
+  <img title="Netflix" src="https://fhsknightlife.com/wp-content/uploads/2020/04/uVASXqvMzyUrAPfSn9pMtxOC7s89ulzdDKBdtqCP.png" alt="NETFLIX Logo" width="400" />
+  <br>
+  Netflix Clone Built Using React.JS & Firebase
+</h1>
 
-- Login form
-- Sign up form
+<p><font size="3">
+  This is a clone of Netflix website built using <strong><em>React.JS</em></strong> as a Front-end & <strong><em>Firebase</em></strong> & <strong><em>ChatGpt</em></strong> as Back-end. It's not a replica, and it     doesn't have all the features of Netflix website. it's a similar version of Netflix with my own design touch, showing my abilities in React.JS to build something advanced       like Netflix. It contains the home page, sign-in page, sign-up page, browse page, and movie player.
+  <br><br> 
+  <strong><em>Take a look at the live version here:</em></strong> https://netflixgpt-b50ac.web.app :octocat: :heart_eyes:
+</p>
 
 #Features
 
@@ -15,9 +22,3 @@
       - MOvie list
 - Search movie
 - Movie Suggestions
-
-API Key
-9d46839df57dc4511f561e3b8e249af7
-
-API Read Access Token
-eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZDQ2ODM5ZGY1N2RjNDUxMWY1NjFlM2I4ZTI0OWFmNyIsInN1YiI6IjY0ZmRmYThlZmZjOWRlMGVlMDBjMzIxZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mcbQmyQf37EiJikuOCKfn-ExednpMrSYjIexQE1q0mg
